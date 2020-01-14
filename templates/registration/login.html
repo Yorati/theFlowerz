@@ -1,0 +1,42 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+{% if form.errors %}
+
+  <p>Ваше имя пользователя и пароль не совпадают, пожалуйста, попробуйте еще раз</p>
+{% endif %}
+
+{% if next %}
+  {% if user.is_authenticated %}
+    <p>Пока что вы не можете сделать заказ. Чтобы продолжить, пожалуйста, войдите в систему с учетной записью, которая имеет доступ.</p>
+  {% else %}
+    <p>Пожалуйста войдите, что увидеть контент страницы</p>
+  {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}?next={{request.path}}">
+{% csrf_token %}
+<table>
+
+<tr>
+  <td><b>{{ form.username.label_tag }}</b></td>
+  <td>{{ form.username }}</td>
+</tr>
+
+<tr>
+  <td><b>{{ form.password.label_tag }}</b></td>
+  <td>{{ form.password }}</td>
+</tr>
+</table>
+{# Assumes you setup the password_reset view in your URLconf #}
+<p align="left"><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+<p align="left"><input type="submit" value="Войти" /></p>
+
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+
+{% endblock %}
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = '/'

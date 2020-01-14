@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Букет: {{ flower.title }}</h1>
+
+  <p><strong>Цветы:</strong> <a href="">{{ flower.kind_of_flower }}</a></p>
+  <!-- KindOfFlower detail link not yet defined -->
+  <p><strong>Подробности:</strong> {{ flower.summary }}</p>
+  <p><strong>Цвет:</strong> {% for color in flower.color.all %} {{ color }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Экземпляры</h4>
+
+{% endblock %}

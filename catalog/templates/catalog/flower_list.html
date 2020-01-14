@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Букеты</h1>
+
+    {% if flower_list %}
+    <ul>
+
+      {% for flower in flower_list %}
+      <li>
+        <a href="{{ flower.get_absolute_url }}">{{ flower.title }}</a> ({{flower.kind_of_flower}})
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>В магазине нет цветов.</p>
+    {% endif %}
+{% endblock %}

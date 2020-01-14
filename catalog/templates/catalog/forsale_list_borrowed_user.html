@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Ваша корзина, сэр</h1>
+
+    {% if forsale_list %}
+    <ul>
+
+      {% for forsale in forsale_list %}
+      <li class="{% if forsale.is_overdue %}text-danger{% endif %}">
+        <a href="{% url 'flower-detail' forsale.flower.pk %}">{{forsale.flower.title}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>Ваша корзина пуста</p>
+    {% endif %}
+{% endblock %}

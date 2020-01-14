@@ -1,0 +1,9 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<p>Вы успешно вышли!</p>
+
+<a href="{% url 'login'%}">Войти</a> |
+<a href="{% url 'index'%}">На Главную</a>
+{% endblock %}

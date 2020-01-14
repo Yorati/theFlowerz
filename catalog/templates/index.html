@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h2>Сеть цветочных магазинов</h2>
+
+  <p>Добро пожаловать в <em>TheFlowerz</em>, веб-сайт Django, разработанный в качестве домашнего задания.</p>
+
+<h3>Динамический контент</h3>
+
+  <p>Магазин имеет следующее количество записей:</p>
+  <ul>
+    <li><strong>Букеты:</strong> {{ num_flowers }}</li>
+    <li><strong>Заказать:</strong> {{ num_for_sale }}</li>
+    <li><strong>В Наличии:</strong> {{ num_for_sale_available }}</li>
+    <li><strong>Цветы:</strong> {{ num_kindofflower }}</li>
+  </ul>
+
+{% endblock %}
